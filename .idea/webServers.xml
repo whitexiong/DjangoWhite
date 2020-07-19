@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e3f5b4c9-d5fd-4c1f-8244-48b16c8b17b4" name="cxx1" url="http://139.196.126.203">
+        <fileTransfer host="139.196.126.203" port="1991" rootFolder="/root/python" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="1991" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
