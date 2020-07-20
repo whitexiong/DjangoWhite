@@ -22,4 +22,5 @@ Django-white从入门到放弃系列
 > 邮箱: 986247535@qq.com
 > QQ: 986247535
 
+
 > 官网学习网址 [Django3文档](https://docs.djangoproject.com/zh-hans/2.2/ "Django3文档")
