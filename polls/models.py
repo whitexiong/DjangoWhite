@@ -16,8 +16,11 @@ class Question(models.Model):
     def __str__(self):
         return self.question_text
 
+
     def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+          now = timezone.now()  #现在的时间
+          return now - datetime.timedelta(days=1) <= self.pub_date <= now  #规定时间在现在到未来一天这个时间段
+
 
 #模型二选项
 class Choice(models.Model):
