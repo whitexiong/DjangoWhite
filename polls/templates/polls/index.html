@@ -1,7 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/node_modules/view-design/dist/styles/iview.css' %}">
+
 </head>
 <body>
         {% if latest_question_list %}
@@ -14,7 +19,29 @@
             <p>No polls are available.</p>
         {% endif %}
 
+        <div id="app">
+            <i-button @click="show">Click me!</i-button>
+            <Modal v-model="visible" title="Welcome">Welcome to ViewUI</Modal>
+        </div>
+
+
 </body>
+
+    <script type="text/javascript" src="{% static 'polls/node_modules/vue/dist/vue.js' %}"></script>
+    <script type="text/javascript" src="{% static 'polls/node_modules/view-design/dist/iview.min.js' %}"></script>
+    <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    visible: false
+                },
+                methods: {
+                    show: function () {
+                        this.visible = true;
+                    }
+                }
+            })
+          </script>
 </html>
 
 
