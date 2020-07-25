@@ -17,6 +17,7 @@ Django-white从入门到放弃系列
 -----
 ### 需要说明的是本教程完全面向零基础从入门到放弃的同学使用
 
+> python manage.py runserver 启动项目
 
 
 > 邮箱: 986247535@qq.com

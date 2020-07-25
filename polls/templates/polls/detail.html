@@ -1,13 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
+<!--suppress ALL -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+
 </head>
 <body>
 <h1>{{ question.question_text }}</h1>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-<form action="{% url 'polls:vote' question.id %}" method="post">
+<form action="{% url 'polls:vote' question.id %}" method="post" >
     {% csrf_token %}
     {% for choice in question.choice_set.all %}
         <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
@@ -15,5 +19,43 @@
     {% endfor %}
     <input type="submit" value="Vote">
 </form>
+
+<template>
+  <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+  <div style="margin: 15px 0;"></div>
+  <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
+    <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
+  </el-checkbox-group>
+</template>
+
 </body>
+
+
+    <script type="text/javascript" src="{% static 'polls/node_modules/vue/dist/vue.js' %}"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+     <script>
+          const cityOptions = ['上海', '北京', '广州', '深圳'];
+          export default {
+            data() {
+              return {
+                checkAll: false,
+                checkedCities: ['上海', '北京'],
+                cities: cityOptions,
+                isIndeterminate: true
+              };
+            },
+            methods: {
+              handleCheckAllChange(val) {
+                this.checkedCities = val ? cityOptions : [];
+                this.isIndeterminate = false;
+              },
+              handleCheckedCitiesChange(value) {
+                let checkedCount = value.length;
+                this.checkAll = checkedCount === this.cities.length;
+                this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+              }
+            }
+          };
+        </script>
 </html>
